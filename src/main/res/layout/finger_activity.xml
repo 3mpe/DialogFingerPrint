@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Fingerprint"
+        android:src="@mipmap/fingerprint"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".9"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:orientation="vertical">
+
+            <com.example.a3mpe.fonter.CustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="E-Mail"
+                android:textSize="18sp"
+                app:fontName="@string/DosisRegular"
+                app:textAllCaps="true"
+                tools:ignore="HardcodedText" />
+
+            <com.example.a3mpe.fonter.CustomEditText
+                android:id="@+id/edt_mail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#fff"
+                android:hint="example@example.com"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:textColor="#000"
+                app:fontName="@string/DosisRegular" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:orientation="vertical">
+
+            <com.example.a3mpe.fonter.CustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:text="Password"
+                android:textSize="18sp"
+                app:fontName="@string/DosisRegular"
+                app:textAllCaps="true"
+                tools:ignore="HardcodedText" />
+
+            <com.example.a3mpe.fonter.CustomEditText
+                android:id="@+id/edt_pass"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#fff"
+                android:hint="*********"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                app:fontName="@string/DosisRegular"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Signin" />
+
+        <com.example.a3mpe.fonter.CustomFontTextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18dp"/>
+    </LinearLayout>
+
+</LinearLayout>

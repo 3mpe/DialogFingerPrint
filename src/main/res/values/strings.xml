@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">CustomFingerPrint</string>
+
+    <string name="DosisBold">Dosis-Bold.ttf</string>
+    <string name="DosisExtraBold">Dosis-ExtraBold.ttf</string>
+    <string name="DosisLight">Dosis-Light.ttf</string>
+    <string name="DosisMedium">Dosis-Medium.ttf</string>
+    <string name="DosisRegular">Dosis-Regular.ttf</string>
+    <string name="DosisSemiBold">Dosis-SemiBold.ttf</string>
+    <string name="fontawesomewebfont">fontawesome-webfont.ttf</string>
+    <string name="LatoBlack">Lato-Black.ttf</string>
+    <string name="LatoBlackItalic">Lato-BlackItalic.ttf</string>
+    <string name="LatoBold">Lato-Bold.ttf</string>
+    <string name="LatoBoldItalic">Lato-BoldItalic.ttf</string>
+    <string name="LatoHairline">Lato-Hairline.ttf</string>
+    <string name="LatoHairlineItalic">Lato-HairlineItalic.ttf</string>
+    <string name="LatoItalic">Lato-Italic.ttf</string>
+    <string name="LatoLight">Lato-Light.ttf</string>
+    <string name="LatoLightItalic">Lato-LightItalic.ttf</string>
+    <string name="LatoMedium">Lato-Medium.ttf</string>
+    <string name="LatoMediumItalic">Lato-MediumItalic.ttf</string>
+    <string name="LatoRegular">Lato-Regular.ttf</string>
+    <string name="LatoSemibold">Lato-Semibold.ttf</string>
+    <string name="LatoSemiboldItalic">Lato-SemiboldItalic.ttf</string>
+    <string name="LatoThin">Lato-Thin.ttf</string>
+    <string name="LatoThinItalic">Lato-ThinItalic.ttf</string>
+
+</resources>
