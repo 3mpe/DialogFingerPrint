@@ -56,7 +56,7 @@ public class FingerDialog extends DialogFragment {
     private SuccessInterface Sci;
     private String KEY_NAME = "0x00123321123321";
     private CustomFontTextView tv_error;
-    
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -114,10 +114,7 @@ public class FingerDialog extends DialogFragment {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void setupFingerPrint() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            // Cihazın bir parmak izi algılayıcısı olup olmadığını kontrol et
             if (!checkPermission(getContext(), Manifest.permission.USE_FINGERPRINT)) {
                 requestPermissions(new String[]{Manifest.permission.USE_FINGERPRINT}, 0);
                 return;
@@ -130,15 +127,12 @@ public class FingerDialog extends DialogFragment {
                 tv_error.setText("The device does not support fingerprinting. ");
             }
 
-            // Kullanıcıya ait kayıtlı parmak izinin olup olmadığının kontrolu.
             if (!fingerprintManager.hasEnrolledFingerprints()) {
                 // If the user hasn’t configured any fingerprints, then display the following message//
                 tv_error.setText("The fingerprint is not configured. Please register at least one fingerprint in the Settings section of your device");
             }
 
-            //Check that the lockscreen is secured//
             if (!keyguardManager.isKeyguardSecure()) {
-                // If the user hasn’t secured their lockscreen with a PIN password or pattern, then display the following text//
                 tv_error.setText("Please enable lock screen security in the device's settings.");
             } else {
                 try {
@@ -148,10 +142,8 @@ public class FingerDialog extends DialogFragment {
                 }
 
                 if (initCipher()) {
-                    //Eğer şifreleme başarılı bir şekilde başlatılırsa.
                     cryptoObject = new FingerprintManager.CryptoObject(cipher);
 
-                    // Burada bir sonraki bölümde oluşturacağımız FingerprintHandler sınıfını referans alıyorum.
                     FingerprintHandler helper = new FingerprintHandler(getContext(), Sci);
                     helper.startAuth(fingerprintManager, cryptoObject);
                 }
@@ -162,31 +154,23 @@ public class FingerDialog extends DialogFragment {
         }
     }
 
-    // Android anahtar deposuna erişmek ve şifreleme anahtarını oluşturmak için
     @RequiresApi(Build.VERSION_CODES.M)
     private void generateKey() throws FingerprintException {
         try {
-            // standart android anahtar deposu
             keyStore = KeyStore.getInstance("AndroidKeyStore");
 
-            // Anahtar oluştur.
             keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore");
 
-            //Boşbir keystore başlat
             keyStore.load(null);
 
-            //Initialize the KeyGenerator//
             keyGenerator.init(new
-                    //Bu tuşun kullanılabileceği işlemleri seç
                     KeyGenParameterSpec.Builder(KEY_NAME, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                     .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
 
-                    // Kullanıcının her kimliğini bir parmak iziyle her onaylamaları için kullanması için
                     .setUserAuthenticationRequired(true)
                     .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
                     .build());
 
-            //Anahtarı Üret//
             keyGenerator.generateKey();
 
         } catch (KeyStoreException
@@ -200,11 +184,9 @@ public class FingerDialog extends DialogFragment {
         }
     }
 
-    //Create a new method that we’ll use to initialize our cipher//
     @RequiresApi(api = Build.VERSION_CODES.M)
     public boolean initCipher() {
         try {
-            //Obtain a cipher instance and configure it with the properties required for fingerprint authentication//
             cipher = Cipher.getInstance(
                     KeyProperties.KEY_ALGORITHM_AES + "/"
                             + KeyProperties.BLOCK_MODE_CBC + "/"
@@ -221,7 +203,6 @@ public class FingerDialog extends DialogFragment {
             //Return true if the cipher has been initialized successfully//
             return true;
         } catch (KeyPermanentlyInvalidatedException e) {
-
             //Return false if cipher initialization failed//
             return false;
         } catch (KeyStoreException | CertificateException
@@ -230,7 +211,6 @@ public class FingerDialog extends DialogFragment {
             throw new RuntimeException("Failed to init Cipher", e);
         }
     }
-
 
     private class FingerprintException extends Exception {
         public FingerprintException(Exception e) {
